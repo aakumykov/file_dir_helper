@@ -3,6 +3,7 @@ package com.gitlab.aakumykov.file_dir_helper;
 import android.os.Environment;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -12,6 +13,7 @@ import java.util.List;
 
 public class PublicFileHelper {
 
+    @NonNull
     public static List<File> listFilesInDownloads() {
 
         final File[] files = publicDownloadsDir().listFiles();
@@ -22,6 +24,7 @@ public class PublicFileHelper {
         return Arrays.asList(files);
     }
 
+    @NonNull
     public static List<File> listFilesInDownloads(final @NonNull String fileExtension) {
 
         final File[] files = publicDownloadsDir().listFiles(new FilenameFilter() {
@@ -35,6 +38,15 @@ public class PublicFileHelper {
             return new ArrayList<>();
 
         return Arrays.asList(files);
+    }
+
+
+    @Nullable
+    public static File getFileFromDownloads(@NonNull String fileName) {
+        final File file = new File(publicDownloadsDir(), fileName);
+        if (!file.exists())
+            return null;
+        return file;
     }
 
 
