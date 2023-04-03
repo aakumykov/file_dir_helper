@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class FileHelper {
+public class PublicFileHelper {
 
-    public static List<File> listFilesFromPublicDownloads() {
+    public static List<File> listFilesInDownloads() {
 
         final File[] files = publicDownloadsDir().listFiles();
 
@@ -22,7 +22,7 @@ public class FileHelper {
         return Arrays.asList(files);
     }
 
-    public static List<File> listFilesFromPublicDownloads(final @NonNull String fileExtension) {
+    public static List<File> listFilesInDownloads(final @NonNull String fileExtension) {
 
         final File[] files = publicDownloadsDir().listFiles(new FilenameFilter() {
             @Override
@@ -36,7 +36,6 @@ public class FileHelper {
 
         return Arrays.asList(files);
     }
-
 
 
     private static File publicDownloadsDir() {
