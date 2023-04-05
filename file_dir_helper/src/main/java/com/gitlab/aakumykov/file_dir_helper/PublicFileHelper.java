@@ -14,7 +14,7 @@ import java.util.List;
 public class PublicFileHelper {
 
     @NonNull
-    public static List<File> listFilesInDownloads() {
+    public static List<File> listFilesFromDownloads() {
 
         final File[] files = publicDownloadsDir().listFiles();
 
@@ -25,7 +25,7 @@ public class PublicFileHelper {
     }
 
     @NonNull
-    public static List<File> listFilesInDownloads(final @NonNull String fileExtension) {
+    public static List<File> listFilesFromDownloads(final @NonNull String fileExtension) {
 
         final File[] files = publicDownloadsDir().listFiles(new FilenameFilter() {
             @Override
