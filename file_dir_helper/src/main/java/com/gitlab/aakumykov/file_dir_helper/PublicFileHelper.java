@@ -3,9 +3,9 @@ package com.gitlab.aakumykov.file_dir_helper;
 import android.os.Environment;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,11 +41,10 @@ public class PublicFileHelper {
     }
 
 
-    @Nullable
-    public static File getFileFromDownloads(@NonNull String fileName) {
+    public static File getFileFromDownloads(@NonNull String fileName) throws FileNotFoundException {
         final File file = new File(publicDownloadsDir(), fileName);
         if (!file.exists())
-            return null;
+            throw new FileNotFoundException("File '"+file.getAbsolutePath()+"' does not exists");
         return file;
     }
 
